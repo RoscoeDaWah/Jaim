@@ -6,11 +6,11 @@
 <!-- for the classes in your application. -->
 <project basedir="." default="all" name="jaimlib">
 
-    <target name="init">     
+    <target name="init">
     </target>
 
     <target depends="init" name="compile">
-       <mkdir dir="build"/>
+        <mkdir dir="build"/>
         <!-- Both srcdir and destdir should be package roots. -->
         <!-- They could be different of course; in that case NetBeans can also be set -->
         <!-- up to compile to a different filesystem in the same way; see Compiler Types: -->
@@ -20,12 +20,12 @@
 
     <target depends="init,compile" name="jar">
         <mkdir dir="lib"/>
-	<copy todir="build">
- 	    <fileset dir="src">
-	       <include name="**/*.properties"/>
-	    </fileset>
+        <copy todir="build">
+            <fileset dir="src">
+                <include name="**/*.properties"/>
+            </fileset>
         </copy>
-        <jar basedir="build" compress="true" jarfile="lib/jaimlib.jar">    
+        <jar basedir="build" compress="true" jarfile="lib/jaimlib.jar">
             <exclude name="**/*.java"/>
             <exclude name="**/jaimtest/**"/>
         </jar>
@@ -33,10 +33,10 @@
 
     <target depends="init,compile" name="jartest">
         <mkdir dir="lib"/>
-        <jar basedir="build" compress="true" jarfile="lib/jaimtest.jar">    
-	    <manifest>
- 	       <attribute name="Main-Class" value="com.wilko.jaimtest.JaimTest"/>
-	    </manifest>
+        <jar basedir="build" compress="true" jarfile="lib/jaimtest.jar">
+            <manifest>
+                <attribute name="Main-Class" value="com.wilko.jaimtest.JaimTest"/>
+            </manifest>
             <exclude name="**/*.java"/>
         </jar>
     </target>
@@ -55,29 +55,29 @@
     </target>
 
     <target depends="init" description="Clean all build products." name="clean">
-    <delete dir="doc/apidoc" includeEmptyDirs="true"/>
-    <delete dir="build" includeEmptyDirs="true"/>
-    <delete dir="lib" includeEmptyDirs="true"/>
-    <delete>
-       <fileset dir="src" includes="**/*.class"/>
-    </delete>
+        <delete dir="doc/apidoc" includeEmptyDirs="true"/>
+        <delete dir="build" includeEmptyDirs="true"/>
+        <delete dir="lib" includeEmptyDirs="true"/>
+        <delete>
+            <fileset dir="src" includes="**/*.class"/>
+        </delete>
     </target>
 
     <target depends="javadoc,compile,jar,jartest" name="dist">
         <delete>
-           <fileset dir="." includes="jaimlib.tar*"/>
+            <fileset dir="." includes="jaimlib.tar*"/>
         </delete>
         <mkdir dir="jaimlib"/>
         <mkdir dir="jaimlib/lib"/>
         <mkdir dir="jaimlib/doc"/>
         <copy todir="jaimlib">
-           <fileset dir="." includes="license.txt"/>
-           <fileset dir="." includes="build.xml"/>
-           <fileset dir="." includes="changes.txt"/>
-           <fileset dir="." includes="readme.txt"/>
-        </copy>   
+            <fileset dir="." includes="license.txt"/>
+            <fileset dir="." includes="build.xml"/>
+            <fileset dir="." includes="changes.txt"/>
+            <fileset dir="." includes="readme.txt"/>
+        </copy>
         <copy todir="jaimlib/lib">
-           <fileset dir="lib"/>
+            <fileset dir="lib"/>
         </copy>
         <copy todir="jaimlib/doc">
             <fileset dir="doc"/>
@@ -89,20 +89,20 @@
     </target>
     <target depends="javadoc,compile,jar,jartest" name="srcdist">
         <delete>
-           <fileset dir="." includes="jaimlibsrc.tar*"/>
+            <fileset dir="." includes="jaimlibsrc.tar*"/>
         </delete>
         <mkdir dir="jaimlib"/>
         <mkdir dir="jaimlib/lib"/>
         <mkdir dir="jaimlib/doc"/>
         <mkdir dir="jaimlib/src"/>
         <copy todir="jaimlib">
-           <fileset dir="." includes="license.txt"/>
-           <fileset dir="." includes="build.xml"/>
-           <fileset dir="." includes="changes.txt"/>
-           <fileset dir="." includes="readme.txt"/>
-        </copy>   
+            <fileset dir="." includes="license.txt"/>
+            <fileset dir="." includes="build.xml"/>
+            <fileset dir="." includes="changes.txt"/>
+            <fileset dir="." includes="readme.txt"/>
+        </copy>
         <copy todir="jaimlib/lib">
-           <fileset dir="lib"/>
+            <fileset dir="lib"/>
         </copy>
         <copy todir="jaimlib/doc">
             <fileset dir="doc"/>

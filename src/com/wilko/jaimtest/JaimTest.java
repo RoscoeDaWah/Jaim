@@ -25,12 +25,13 @@
 
 package com.wilko.jaimtest;
 
-import java.net.*;
-import java.io.*;
-
 import com.wilko.jaim.*;
 
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Enumeration;
+import java.util.Iterator;
 
 /**
  * @author paulw

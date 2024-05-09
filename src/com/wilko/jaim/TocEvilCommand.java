@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,36 +26,34 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class TocEvilCommand extends TocCommand {
 
-    private String buddy;
-    private boolean anonymous;
-   
-    /** Creates new TocEvilCommand */
+    private final String buddy;
+    private final boolean anonymous;
+
+    /**
+     * Creates new TocEvilCommand
+     */
     public TocEvilCommand(String buddy, boolean anonymous) {
-        this.buddy=Utils.normalise(buddy);
-        this.anonymous=anonymous;
+        this.buddy = Utils.normalise(buddy);
+        this.anonymous = anonymous;
     }
-    
-    public String toString()
-    {
-        String ret="toc_evil "+buddy;
-        if (anonymous)
-        {
-            ret=ret+" anon";
-        }
-        else
-            ret=ret+" norm";
-        
-        return(ret);
+
+    public String toString() {
+        String ret = "toc_evil " + buddy;
+        if (anonymous) {
+            ret = ret + " anon";
+        } else
+            ret = ret + " norm";
+
+        return (ret);
     }
-    
+
     public byte[] getBytes() {
         return toString().getBytes();
     }
-    
+
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,27 +26,27 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class FLAPSignoffFrame extends FLAPFrame {
 
-    /** Creates new FlapSignonFrame */
+    /**
+     * Creates new FlapSignonFrame
+     */
     public FLAPSignoffFrame() {
-   
-                frame[1]=FLAP_FRAME_SIGNOFF;
+
+        frame[1] = FLAP_FRAME_SIGNOFF;
     }
-    
-    public FLAPSignoffFrame(byte frameData[])
-    {
-                frame[1]=FLAP_FRAME_SIGNOFF;
+
+    public FLAPSignoffFrame(byte[] frameData) {
+        frame[1] = FLAP_FRAME_SIGNOFF;
         setFrameData(frameData);
     }
-    
-    
+
+
     public int getFLAPFrameType() {
-        return(FLAPFrame.FLAP_FRAME_SIGNOFF);
+        return (FLAPFrame.FLAP_FRAME_SIGNOFF);
     }
-    
+
 }

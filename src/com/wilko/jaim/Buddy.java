@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -25,64 +25,79 @@
 
 package com.wilko.jaim;
 
-/** This is a buddy object that holds the buddy's name and other
+/**
+ * This is a buddy object that holds the buddy's name and other
  * information about a buddy.
+ *
  * @author Brett Humphreys
  */
- public class Buddy {
-	 /** Name of the buddy */
-	 private String buddyName;
-	 
-	 /** Permit value */
-	 private boolean permit;
-	 
-	 /** deny value */
-	 private boolean deny;
-	 
-	 /** Constructor that sets the buddy name 
-	  * @param name the name of this buddy.
-	  */
-	 public Buddy ( String name )
-	 {
-		 buddyName = name;
-	 }
-	 
-	 /** Gets the buddy name 
-	  * @return buddy name
-	  */
-	  public String getName()
-	  {
-		  return buddyName;
-	  }
-	 /** Sets the permit value
-	  * @param permitVal what to set permit to
-	  */
-	 public void setPermit( boolean permitVal )
-	 {
-		 permit = permitVal;
-	 }
-	 
-	 /** Gets the permit value
-	  * @return permit value
-	  */
-	 public boolean getPermit( )
-	 {
-		 return permit;
-	 }
-	 
-	 /** Sets the deny value
-	  * @param denyVal what to set deny to
-	  */
-	 public void setDeny( boolean denyVal )
-	 {
-		 deny = denyVal;
-	 }
-	 
-	 /** Gets the deny value
-	  * @return deny value
-	  */
-	 public boolean getDeny( )
-	 {
-		 return deny;
-	 }
- }
+public class Buddy {
+    /**
+     * Name of the buddy
+     */
+    private final String buddyName;
+
+    /**
+     * Permit value
+     */
+    private boolean permit;
+
+    /**
+     * deny value
+     */
+    private boolean deny;
+
+    /**
+     * Constructor that sets the buddy name
+     *
+     * @param name the name of this buddy.
+     */
+    public Buddy(String name) {
+        buddyName = name;
+    }
+
+    /**
+     * Gets the buddy name
+     *
+     * @return buddy name
+     */
+    public String getName() {
+        return buddyName;
+    }
+
+    /**
+     * Gets the permit value
+     *
+     * @return permit value
+     */
+    public boolean getPermit() {
+        return permit;
+    }
+
+    /**
+     * Sets the permit value
+     *
+     * @param permitVal what to set permit to
+     */
+    public void setPermit(boolean permitVal) {
+        permit = permitVal;
+    }
+
+    /**
+     * Gets the deny value
+     *
+     * @return deny value
+     */
+    public boolean getDeny() {
+        return deny;
+    }
+
+    /**
+     * Sets the deny value
+     *
+     * @param denyVal what to set deny to
+     */
+    public void setDeny(boolean denyVal) {
+        deny = denyVal;
+    }
+}

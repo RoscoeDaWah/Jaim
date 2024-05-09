@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,18 +26,19 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public abstract class TocCommand {
 
-    /** Creates new TocCommand */
+    /**
+     * Creates new TocCommand
+     */
     public TocCommand() {
     }
-    
+
     abstract public byte[] getBytes();
-    
+
     abstract public String toString();
-    
+
 }

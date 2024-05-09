@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -25,29 +25,29 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $version: $
  */
 public class TocSetIdleCommand extends TocCommand {
 
-    private int idle;
-    private static final String CMD="toc_set_idle ";
-    
-    /** Creates new TocSetIdleCommand
-     *@param idleSecs - the period for which the user has been idle
+    private static final String CMD = "toc_set_idle ";
+    private final int idle;
+
+    /**
+     * Creates new TocSetIdleCommand
+     *
+     * @param idleSecs - the period for which the user has been idle
      */
     public TocSetIdleCommand(int idleSecs) {
-        idle=idleSecs;
+        idle = idleSecs;
     }
-    
-    public String toString()
-    {
-        return(CMD+idle);
+
+    public String toString() {
+        return (CMD + idle);
     }
 
     public byte[] getBytes() {
-        return(toString().getBytes());
+        return (toString().getBytes());
     }
-    
+
 }

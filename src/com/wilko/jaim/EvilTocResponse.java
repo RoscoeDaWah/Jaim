@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -27,91 +27,99 @@ package com.wilko.jaim;
 
 import java.util.StringTokenizer;
 
-/** An EvilTocResponse is delivered to a {@link JaimEventListener } when the signed on buddy is "eviled" or warned
+/**
+ * An EvilTocResponse is delivered to a {@link JaimEventListener } when the signed on buddy is "eviled" or warned
+ *
  * @author paulw
  * @version $Revision: 1.6 $
  */
 public class EvilTocResponse extends TocResponse implements TocResponseHandler {
 
+    public static final String RESPONSE_TYPE = "EVILED";
     private boolean anonymousEvil;
     private int evilAmount;
     private String evilBy;
-    
-    public static final String RESPONSE_TYPE="EVILED";
-    
-    /** Creates new EvilTocResponse */
+
+    /**
+     * Creates new EvilTocResponse
+     */
     public EvilTocResponse() {
-        anonymousEvil=true;
-        evilBy="";
-        evilAmount=0;
+        anonymousEvil = true;
+        evilBy = "";
+        evilAmount = 0;
     }
 
-    /** Parse the evil message from the TOC server
+    /**
+     * Parse the evil message from the TOC server
+     *
      * @param str The evil message
-     */    
+     */
     public TocResponse parseString(java.lang.String str) {
-        EvilTocResponse tr=new EvilTocResponse();
+        EvilTocResponse tr = new EvilTocResponse();
         tr.doParse(str);
-        return(tr);
+        return (tr);
     }
-    
-    private void doParse(String str)
-    {
-            
-        StringTokenizer st=new StringTokenizer(str,":");
-        
+
+    private void doParse(String str) {
+
+        StringTokenizer st = new StringTokenizer(str, ":");
+
         st.nextToken();     // skip over "EVILED"
-        evilAmount=Integer.parseInt(st.nextToken());
-        if (st.hasMoreTokens())
-        {
-            evilBy=st.nextToken();
-            anonymousEvil=false;
-        }
-        else
-        {
-            anonymousEvil=true;
+        evilAmount = Integer.parseInt(st.nextToken());
+        if (st.hasMoreTokens()) {
+            evilBy = st.nextToken();
+            anonymousEvil = false;
+        } else {
+            anonymousEvil = true;
         }
     }
-    
-    /** Get the evil amount from this response.  This is the current evil or warning level for the authenticated buddy, not the increment specified by the last warning
+
+    /**
+     * Get the evil amount from this response.  This is the current evil or warning level for the authenticated buddy, not the increment specified by the last warning
+     *
      * @return The cumulative evil or warning level
-     */    
-    public int getEvilAmount()
-    {
-        return(evilAmount);
+     */
+    public int getEvilAmount() {
+        return (evilAmount);
     }
-    
-    /** Obtain the name of the buddy that issued the warning.
+
+    /**
+     * Obtain the name of the buddy that issued the warning.
+     *
      * @return The buddy name that issued the warning
      * @see #isAnonymous
-     */    
-    public String getEvilBy()
-    {
-        return(evilBy);
+     */
+    public String getEvilBy() {
+        return (evilBy);
     }
-    
-    /** Obtain the anonymous status of this warning
+
+    /**
+     * Obtain the anonymous status of this warning
+     *
      * @return true if this warning was issued anonymously
-     */    
-    public boolean isAnonymous()
-    {
-        return(anonymousEvil);
+     */
+    public boolean isAnonymous() {
+        return (anonymousEvil);
     }
-    
-    /** Used by the response dispatcher
+
+    /**
+     * Used by the response dispatcher
+     *
      * @return The response type
-     */    
-     public String getResponseType() {
+     */
+    public String getResponseType() {
         return RESPONSE_TYPE;
     }
-    
-  
-   /** Returns true if this response handler can handle the specified response.
+
+
+    /**
+     * Returns true if this response handler can handle the specified response.
+     *
      * @param Response - the response string from TOC.  This is the part of the response before the first ':'
      * @return true if the response can be handled
      */
     public boolean canHandle(String Response) {
-        return(Response.equalsIgnoreCase(RESPONSE_TYPE));
+        return (Response.equalsIgnoreCase(RESPONSE_TYPE));
     }
-    
+
 }

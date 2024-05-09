@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,31 +26,31 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $version: $
  */
 public class TocSetAwayCommand extends TocCommand {
 
-    private String awayMsg;
-     
-    private static String CMD="toc_set_away ";
-    /** Creates new TocSetInfoCommand
+    private static final String CMD = "toc_set_away ";
+    private final String awayMsg;
+
+    /**
+     * Creates new TocSetInfoCommand
+     *
      * @param awayMsg The away message for this user.  May contain HTML. To cancel "away" status set the awayMsg to ""
      */
-    
+
     public TocSetAwayCommand(String awayMsg) {
-        this.awayMsg=Utils.encodeText(awayMsg);
+        this.awayMsg = Utils.encodeText(awayMsg);
     }
-    
-    
-     public String toString()
-    {
-        return(CMD+awayMsg);
+
+
+    public String toString() {
+        return (CMD + awayMsg);
     }
 
     public byte[] getBytes() {
-        return(toString().getBytes());
+        return (toString().getBytes());
     }
-    
+
 }

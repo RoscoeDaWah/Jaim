@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -25,27 +25,27 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class FLAPErrorFrame extends FLAPFrame {
 
-    /** Creates new FLAPErrorFrame */
+    /**
+     * Creates new FLAPErrorFrame
+     */
     public FLAPErrorFrame() {
-         frame[1]=FLAP_FRAME_ERROR;
+        frame[1] = FLAP_FRAME_ERROR;
 
     }
-    
-    public FLAPErrorFrame(byte frameData[])
-    {
-         frame[1]=FLAP_FRAME_ERROR;
+
+    public FLAPErrorFrame(byte[] frameData) {
+        frame[1] = FLAP_FRAME_ERROR;
         setFrameData(frameData);
     }
-    
-    
+
+
     public int getFLAPFrameType() {
         return FLAPFrame.FLAP_FRAME_ERROR;
     }
-    
+
 }

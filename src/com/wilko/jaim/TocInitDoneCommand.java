@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,25 +26,25 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.4 $
  */
 public class TocInitDoneCommand extends TocCommand {
 
-    private static final String CMD="toc_init_done";
-    
-    /** Creates new TocInitDoneCommand */
+    private static final String CMD = "toc_init_done";
+
+    /**
+     * Creates new TocInitDoneCommand
+     */
     public TocInitDoneCommand() {
     }
-    
+
     public byte[] getBytes() {
-        return(CMD.getBytes());
+        return (CMD.getBytes());
     }
-    
-    public String toString()
-    {
-        return(CMD);
+
+    public String toString() {
+        return (CMD);
     }
-    
+
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,24 +26,21 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.5 $
  */
 public abstract class TocResponse {
-    
+
     protected String cmd;
-    
-    public TocResponse()
-    {
-        cmd="";
+
+    public TocResponse() {
+        cmd = "";
     }
-    
-    public String toString()
-    {
-        return(cmd);
+
+    public String toString() {
+        return (cmd);
     }
-    
+
     public abstract String getResponseType();
-    
+
 }

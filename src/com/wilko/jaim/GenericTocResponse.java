@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -25,61 +25,71 @@
 
 package com.wilko.jaim;
 
-/** A GenericTocResponse is used internally in the Response parsing and processing logic of {@link JaimConnection}
+/**
+ * A GenericTocResponse is used internally in the Response parsing and processing logic of {@link JaimConnection}
+ *
  * @author paulw
  * @version $Revision: 1.5 $
  */
 public class GenericTocResponse extends TocResponse implements TocResponseHandler {
 
-    /** Creates new GenericTocCommand */
+    /**
+     * Creates new GenericTocCommand
+     */
     public GenericTocResponse() {
-        this.cmd="";
+        this.cmd = "";
     }
-    
-    /** Parse an incoming string
+
+    /**
+     * Parse an incoming string
+     *
      * @param str The response string to be parsed
-     */    
-    public TocResponse parseString(String str)
-    {
-        GenericTocResponse tr=new GenericTocResponse();
+     */
+    public TocResponse parseString(String str) {
+        GenericTocResponse tr = new GenericTocResponse();
         tr.doParse(str);
         return tr;
     }
-    
-    private void doParse(String str)
-    {
-        cmd=str;
+
+    private void doParse(String str) {
+        cmd = str;
     }
 
-    /** Get a byte array that contains the response
+    /**
+     * Get a byte array that contains the response
+     *
      * @return The response as an array of bytes
-     */    
+     */
     public byte[] getBytes() {
-        return(cmd.getBytes());
+        return (cmd.getBytes());
     }
-    
-    /** Convert this response to a string
+
+    /**
+     * Convert this response to a string
+     *
      * @return The response as a string
-     */    
-    public String toString()
-    {
-        return(cmd);
+     */
+    public String toString() {
+        return (cmd);
     }
-    
-    /** Used in the response dispatching process
+
+    /**
+     * Used in the response dispatching process
+     *
      * @return The respnse type
-     */    
-    public String getResponseType()
-    {
-        return("UNKNOWN");
+     */
+    public String getResponseType() {
+        return ("UNKNOWN");
     }
-    
-    /** Returns true if this response handler can handle the specified response.
+
+    /**
+     * Returns true if this response handler can handle the specified response.
+     *
      * @param Response - the response string from TOC.  This is the part of the response before the first ':'
      * @return true if the response can be handled
      */
     public boolean canHandle(String Response) {
-        return(true);
+        return (true);
     }
-    
+
 }

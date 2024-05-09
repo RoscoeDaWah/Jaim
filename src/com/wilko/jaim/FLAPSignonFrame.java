@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,65 +26,57 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class FLAPSignonFrame extends FLAPFrame {
 
-    /** Creates new FlapSignonFrame */
+    /**
+     * Creates new FlapSignonFrame
+     */
     public FLAPSignonFrame() {
-        frame[1]=FLAP_FRAME_SIGNON;
+        frame[1] = FLAP_FRAME_SIGNON;
     }
-    
-    public FLAPSignonFrame(byte frameData[])
-    {
-        frame[1]=FLAP_FRAME_SIGNON;
+
+    public FLAPSignonFrame(byte[] frameData) {
+        frame[1] = FLAP_FRAME_SIGNON;
         setFrameData(frameData);
     }
-    
-    public int getFLAPVersion()
-    {
-        return(((frame[6]&0xff)*16777216)+((frame[7]&0xff)*65536)+((frame[8]&0xff)*256)+(frame[9]&0xff));
+
+    public int getFLAPVersion() {
+        return (((frame[6] & 0xff) * 16777216) + ((frame[7] & 0xff) * 65536) + ((frame[8] & 0xff) * 256) + (frame[9] & 0xff));
     }
-    
-    public void setFLAPVersion(int version)
-    {
-        for (int i=3;i>=0;i--)
-        {
-            frame[6+i]=(byte)(version&0xff);
-            version=version>>8;
+
+    public void setFLAPVersion(int version) {
+        for (int i = 3; i >= 0; i--) {
+            frame[6 + i] = (byte) (version & 0xff);
+            version = version >> 8;
         }
     }
-    
-    public void setTLVTag(int tag)
-    {
-        for (int i=1;i>=0;i--)
-        {
-            frame[10+i]=(byte)(tag&0xff);
-            tag=tag>>8;
+
+    public void setTLVTag(int tag) {
+        for (int i = 1; i >= 0; i--) {
+            frame[10 + i] = (byte) (tag & 0xff);
+            tag = tag >> 8;
         }
     }
-    
-    public void setUserName(String name)
-    {
-       
-        int len=0;
-        for (int i=0;i<name.length();i++)
-        {   
-           char c = name.charAt(i);
-           if (c != ' ')
-           {
-               frame[FLAP_DATA_OFFSET+8+len++]=(byte)c;
-           }
+
+    public void setUserName(String name) {
+
+        int len = 0;
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            if (c != ' ') {
+                frame[FLAP_DATA_OFFSET + 8 + len++] = (byte) c;
+            }
         }
-        setLength(8+len);
-        frame[FLAP_DATA_OFFSET+6]=(byte)(len/256);
-        frame[FLAP_DATA_OFFSET+7]=(byte)(len&0xff);
+        setLength(8 + len);
+        frame[FLAP_DATA_OFFSET + 6] = (byte) (len / 256);
+        frame[FLAP_DATA_OFFSET + 7] = (byte) (len & 0xff);
     }
-                  
+
     public int getFLAPFrameType() {
-        return(FLAPFrame.FLAP_FRAME_SIGNON);
+        return (FLAPFrame.FLAP_FRAME_SIGNON);
     }
-    
+
 }

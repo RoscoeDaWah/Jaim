@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -27,54 +27,54 @@ package com.wilko.jaim;
 
 /**
  * The SignOnTocResponse is used internally to manage the TOC signon process.  It is not delivered to clients of {@link JaimConnection}
- * @author  paulw
+ *
+ * @author paulw
  * @version $Revision: 1.5 $
  */
 public class SignOnTocResponse extends TocResponse implements TocResponseHandler {
 
+    public static final String RESPONSE_TYPE = "SIGN_ON";
     String version;
-    
-    public static final String RESPONSE_TYPE="SIGN_ON";
-    
-    
-    /** Creates new SignOnTocResponse */
+
+
+    /**
+     * Creates new SignOnTocResponse
+     */
     public SignOnTocResponse() {
-        version="";
+        version = "";
     }
-    
+
     public String getResponseType() {
-        return(RESPONSE_TYPE);
+        return (RESPONSE_TYPE);
     }
-    
-    protected String getVersion()
-    {
-        return(version);
+
+    protected String getVersion() {
+        return (version);
     }
-    
-   
-    public TocResponse parseString(String str)
-    {
-        SignOnTocResponse tr=new SignOnTocResponse();
+
+
+    public TocResponse parseString(String str) {
+        SignOnTocResponse tr = new SignOnTocResponse();
         tr.doParse(str);
-        return(tr);
+        return (tr);
     }
-    
-    private void doParse(String str)
-    {
-        cmd=str;
-        int colonpos=str.indexOf(':');
-        if (colonpos != -1)
-        {
-            version=str.substring(colonpos+1);
+
+    private void doParse(String str) {
+        cmd = str;
+        int colonpos = str.indexOf(':');
+        if (colonpos != -1) {
+            version = str.substring(colonpos + 1);
         }
     }
-    
-    /** Returns true if this response handler can handle the specified response.
+
+    /**
+     * Returns true if this response handler can handle the specified response.
+     *
      * @param Response - the response string from TOC.  This is the part of the response before the first ':'
      * @return true if the response can be handled
      */
     public boolean canHandle(String Response) {
-        return(Response.equalsIgnoreCase(RESPONSE_TYPE));
+        return (Response.equalsIgnoreCase(RESPONSE_TYPE));
     }
-    
+
 }

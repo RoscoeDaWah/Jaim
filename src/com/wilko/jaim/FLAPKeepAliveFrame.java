@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,31 +26,30 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.4 $
  */
 public class FLAPKeepAliveFrame extends FLAPFrame {
 
-    /** Creates new FLAPKeepAliveFrame */
+    /**
+     * Creates new FLAPKeepAliveFrame
+     */
     public FLAPKeepAliveFrame() {
         this.initialise();
     }
-    
-    public FLAPKeepAliveFrame(byte frameData[])
-    {
+
+    public FLAPKeepAliveFrame(byte[] frameData) {
         initialise();
         setFrameData(frameData);
     }
-    
-    protected void initialise()
-    {
+
+    protected void initialise() {
         super.initialise();
-	frame[1]=FLAP_FRAME_KEEP_ALIVE;
+        frame[1] = FLAP_FRAME_KEEP_ALIVE;
     }
-    
+
     public int getFLAPFrameType() {
         return (FLAPFrame.FLAP_FRAME_KEEP_ALIVE);
     }
-    
+
 }

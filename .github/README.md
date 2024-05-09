@@ -3,9 +3,11 @@
 This is a fork of [Jaim](https://jaimlib.sourceforge.net/), a Java library that implements the AOL TOC protocol.
 
 This fork features various improvements on the original Jaim:
+
 - Support for chat invites
 
 ## Original README
+
 ```
 Readme.txt for Jaimlib
 ----------------------

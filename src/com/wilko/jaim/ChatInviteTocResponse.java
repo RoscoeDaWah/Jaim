@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -25,23 +25,25 @@
 
 package com.wilko.jaim;
 
-import java.util.Date;
 import java.util.StringTokenizer;
 
-/** A BuddyUpdateTocResponse is delivered to a {@link JaimEventListener } when a buddy update is received from the TOC server
+/**
+ * A BuddyUpdateTocResponse is delivered to a {@link JaimEventListener } when a buddy update is received from the TOC server
+ *
  * @author paulw
  * @version $Revision: 1.7 $
  */
 public class ChatInviteTocResponse extends TocResponse implements TocResponseHandler {
 
+    public static String RESPONSE_TYPE = "CHAT_INVITE";
     private String roomName;
     private String roomID;
     private String senderScreenname;
     private String message;
 
-    public static String RESPONSE_TYPE="CHAT_INVITE";
-
-    /** Creates new BuddyUpdateTocResponse */
+    /**
+     * Creates new BuddyUpdateTocResponse
+     */
     public ChatInviteTocResponse() {
         roomName = "";
         roomID = "";
@@ -49,20 +51,21 @@ public class ChatInviteTocResponse extends TocResponse implements TocResponseHan
         message = "";
     }
 
-    /** The parseString method is used to populate the fields of this class from a Buddy Update string from the TOC server
+    /**
+     * The parseString method is used to populate the fields of this class from a Buddy Update string from the TOC server
+     *
      * @param str The String containing the buddy update
-     */    
+     */
     public TocResponse parseString(String str) {
         ChatInviteTocResponse tr = new ChatInviteTocResponse();
         tr.doParse(str);
-        return(tr);
+        return (tr);
     }
-    
-    private void doParse(String str)
-    {
-        cmd=str;
-        StringTokenizer st=new StringTokenizer(str,":");
-        
+
+    private void doParse(String str) {
+        cmd = str;
+        StringTokenizer st = new StringTokenizer(str, ":");
+
         st.nextToken();
         roomName = st.nextToken();
         roomID = st.nextToken();
@@ -70,9 +73,11 @@ public class ChatInviteTocResponse extends TocResponse implements TocResponseHan
         message = st.nextToken();
     }
 
-    /** Get the response type of  this response.  This method is used by the response dispatcher within JaimConnection
+    /**
+     * Get the response type of  this response.  This method is used by the response dispatcher within JaimConnection
+     *
      * @return The response type
-     */    
+     */
     public String getResponseType() {
         return RESPONSE_TYPE;
     }
@@ -80,6 +85,7 @@ public class ChatInviteTocResponse extends TocResponse implements TocResponseHan
     public String getRoomName() {
         return roomName;
     }
+
     public String getRoomID() {
         return roomID;
     }
@@ -91,13 +97,15 @@ public class ChatInviteTocResponse extends TocResponse implements TocResponseHan
     public String getMessage() {
         return message;
     }
-    
-    /** Returns true if this response handler can handle the specified response.
+
+    /**
+     * Returns true if this response handler can handle the specified response.
+     *
      * @param Response - the response string from TOC.  This is the part of the response before the first ':'
      * @return true if the response can be handled
      */
     public boolean canHandle(String Response) {
-        return(Response.equalsIgnoreCase(RESPONSE_TYPE));
-    }    
-    
+        return (Response.equalsIgnoreCase(RESPONSE_TYPE));
+    }
+
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -25,16 +25,20 @@
 
 package com.wilko.jaim;
 
-/** A JaimEventListener receives JaimEvents from the JaimConnection class.
+/**
+ * A JaimEventListener receives JaimEvents from the JaimConnection class.
  * A {@link JaimEvent} contains a {@link TocResponse} object.
- * @author  paulw
+ *
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public interface JaimEventListener {
 
-    /** Receive an incoming {@link JaimEvent}
-     *@param ev - The incoming event 
+    /**
+     * Receive an incoming {@link JaimEvent}
+     *
+     * @param ev - The incoming event
      */
-    public void receiveEvent(JaimEvent ev);
+    void receiveEvent(JaimEvent ev);
 }
 

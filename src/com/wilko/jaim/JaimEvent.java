@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -19,24 +19,27 @@
 
 package com.wilko.jaim;
 
-/** The JaimEvent object is delivered to all registered {@link JaimEventListener}
- * @see JaimConnection#addEventListener 
- * @author  paulw
+/**
+ * The JaimEvent object is delivered to all registered {@link JaimEventListener}
+ *
+ * @author paulw
  * @version $revision: $
+ * @see JaimConnection#addEventListener
  */
 public class JaimEvent extends java.util.EventObject {
 
-    private TocResponse tocResponse;
-    
-    /** Creates new JaimEvent */
+    private final TocResponse tocResponse;
+
+    /**
+     * Creates new JaimEvent
+     */
     public JaimEvent(Object source, TocResponse tocResponse) {
         super(source);
-        this.tocResponse=tocResponse;
+        this.tocResponse = tocResponse;
     }
-    
-    public TocResponse getTocResponse()
-    {
-        return(tocResponse);
+
+    public TocResponse getTocResponse() {
+        return (tocResponse);
     }
 
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -28,47 +28,42 @@ package com.wilko.jaim;
 import java.util.Enumeration;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  */
 public class TocSetConfigCommand extends TocCommand {
-    
-    private StringBuffer config;
-    
-    private static String CMD="toc_set_config ";
 
-    /** Creates a new instance of TocSetConfigCommand */
+    private static final String CMD = "toc_set_config ";
+    private final StringBuffer config;
+
+    /**
+     * Creates a new instance of TocSetConfigCommand
+     */
     public TocSetConfigCommand() {
-        config=new StringBuffer();
+        config = new StringBuffer();
     }
-    
-    public void addGroup(Group g)
-    {
-        config.append("g "+g.getName()+"\n");
-        Enumeration buddies=g.enumerateBuddies();
-        while (buddies.hasMoreElements())
-        {
-            Buddy b = (Buddy)buddies.nextElement();
-            config.append("b "+b.getName()+"\n");
-            if (b.getPermit())
-            {
-                config.append("p "+b.getName()+"\n");
+
+    public void addGroup(Group g) {
+        config.append("g " + g.getName() + "\n");
+        Enumeration buddies = g.enumerateBuddies();
+        while (buddies.hasMoreElements()) {
+            Buddy b = (Buddy) buddies.nextElement();
+            config.append("b " + b.getName() + "\n");
+            if (b.getPermit()) {
+                config.append("p " + b.getName() + "\n");
             }
-            if (b.getDeny())
-            {
-                config.append("d "+b.getName()+"\n");
+            if (b.getDeny()) {
+                config.append("d " + b.getName() + "\n");
             }
         }
     }
-        
-    
-    public String toString()
-    {
-        return(CMD+'"'+config.toString()+'"');
+
+
+    public String toString() {
+        return (CMD + '"' + config.toString() + '"');
     }
 
     public byte[] getBytes() {
-        return(toString().getBytes());
+        return (toString().getBytes());
     }
-    
+
 }

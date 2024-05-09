@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,51 +26,48 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class FLAPDataFrame extends FLAPFrame {
 
     private int frameLen;
-    
-    /** Creates new FlapDataFrame */
+
+    /**
+     * Creates new FlapDataFrame
+     */
     public FLAPDataFrame() {
-          frame[1]=FLAP_FRAME_DATA;
-        frameLen=1;
-        frame[FLAP_DATA_OFFSET]=0;
+        frame[1] = FLAP_FRAME_DATA;
+        frameLen = 1;
+        frame[FLAP_DATA_OFFSET] = 0;
     }
-    
-    public FLAPDataFrame(byte frameData[])
-    {
-        frame[1]=FLAP_FRAME_DATA;
-        frameLen=1;
-        frame[FLAP_DATA_OFFSET]=0;
+
+    public FLAPDataFrame(byte[] frameData) {
+        frame[1] = FLAP_FRAME_DATA;
+        frameLen = 1;
+        frame[FLAP_DATA_OFFSET] = 0;
         setFrameData(frameData);
     }
-    
-    
+
+
     public int getFLAPFrameType() {
-        return(FLAPFrame.FLAP_FRAME_DATA);
+        return (FLAPFrame.FLAP_FRAME_DATA);
     }
-    
-    public void addString(String s)
-    {
+
+    public void addString(String s) {
         frameLen--;     // Backspace over '0'
-        for (int i=0;i<s.length();i++)
-        {
-            frame[FLAP_DATA_OFFSET+frameLen++]=(byte)s.charAt(i);
+        for (int i = 0; i < s.length(); i++) {
+            frame[FLAP_DATA_OFFSET + frameLen++] = (byte) s.charAt(i);
         }
-        frame[FLAP_DATA_OFFSET+frameLen++]=0;
+        frame[FLAP_DATA_OFFSET + frameLen++] = 0;
         setLength(frameLen);
     }
-    
-    public byte[] getContent()
-    {
+
+    public byte[] getContent() {
         byte[] retarray = new byte[getLength()];
-        
-        System.arraycopy(frame,FLAPFrame.FLAP_DATA_OFFSET,retarray,0,getLength());
-        return(retarray);
+
+        System.arraycopy(frame, FLAPFrame.FLAP_DATA_OFFSET, retarray, 0, getLength());
+        return (retarray);
     }
-    
+
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -20,25 +20,28 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $revision: $
  */
 public interface TocResponseHandler {
 
-    /** Returns true if this response handler can handle the specified response.
-     *@param Response - the response string from TOC.  This is the part of the response before the first ':'
-     *@return true if the response can be handled
+    /**
+     * Returns true if this response handler can handle the specified response.
+     *
+     * @param Response - the response string from TOC.  This is the part of the response before the first ':'
+     * @return true if the response can be handled
      */
-    
-    public boolean canHandle(String Response);
-    
-    /** Parse the provided response
-     *@param Response - the response from the TOC server.  This is the full TOC response string
-     *@return - A TocResponse object that represents this response
+
+    boolean canHandle(String Response);
+
+    /**
+     * Parse the provided response
+     *
+     * @param Response - the response from the TOC server.  This is the full TOC response string
+     * @return - A TocResponse object that represents this response
      */
-    
-    public TocResponse parseString(String Response);
-    
+
+    TocResponse parseString(String Response);
+
 }
 

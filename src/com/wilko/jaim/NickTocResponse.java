@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,57 +26,58 @@
 package com.wilko.jaim;
 
 /**
-* The NicTocResponse is used internally to manage the TOC signon process.  It is not delivered to clients of {@link JaimConnection}
- * @author  paulw
+ * The NicTocResponse is used internally to manage the TOC signon process.  It is not delivered to clients of {@link JaimConnection}
+ *
+ * @author paulw
  * @version $Revision: 1.6 $
  */
 public class NickTocResponse extends TocResponse implements TocResponseHandler {
 
+    public static final String RESPONSE_TYPE = "NICK";
     private String nickName;
-    
-    public static final String RESPONSE_TYPE="NICK";
-    
-    
-    /** Creates new NickTocResponse */
+
+
+    /**
+     * Creates new NickTocResponse
+     */
     public NickTocResponse() {
-        nickName="";
+        nickName = "";
     }
 
-    
+
     public TocResponse parseString(java.lang.String str) {
-        NickTocResponse tr=new NickTocResponse();
+        NickTocResponse tr = new NickTocResponse();
         tr.doParse(str);
-        return(tr);
+        return (tr);
     }
-    
-    private void doParse(String str)
-    {
-        int colonPos=str.indexOf(':');
-        
-            if (colonPos != -1)
-            {
-                nickName=str.substring(colonPos+1);
-            }
-        
-        
+
+    private void doParse(String str) {
+        int colonPos = str.indexOf(':');
+
+        if (colonPos != -1) {
+            nickName = str.substring(colonPos + 1);
+        }
+
+
     }
-    
-    public String getNickName()
-    {
-        return(nickName);
+
+    public String getNickName() {
+        return (nickName);
     }
-    
-    
+
+
     public String getResponseType() {
         return RESPONSE_TYPE;
     }
-    
-    /** Returns true if this response handler can handle the specified response.
+
+    /**
+     * Returns true if this response handler can handle the specified response.
+     *
      * @param Response - the response string from TOC.  This is the part of the response before the first ':'
      * @return true if the response can be handled
      */
     public boolean canHandle(String Response) {
-        return(Response.equalsIgnoreCase(RESPONSE_TYPE));
+        return (Response.equalsIgnoreCase(RESPONSE_TYPE));
     }
-    
+
 }

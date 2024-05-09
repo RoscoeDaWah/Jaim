@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -27,24 +27,26 @@ package com.wilko.jaim;
 
 /**
  * This is a "pseudo" TOC response - it is delivered to JaimLib clients to indicate that the connection to the server has been lost.
- * @author  wilko
+ *
+ * @author wilko
  * @version: $revision: $
  */
 public class ConnectionLostTocResponse extends TocResponse {
-    
-     public static final String RESPONSE_TYPE="CONNECTIONLOST";
-    
-    /** Creates a new instance of LoginCompleteTocResponse */
-     public ConnectionLostTocResponse() {
+
+    public static final String RESPONSE_TYPE = "CONNECTIONLOST";
+
+    /**
+     * Creates a new instance of LoginCompleteTocResponse
+     */
+    public ConnectionLostTocResponse() {
     }
-    
+
     public String getResponseType() {
         return (RESPONSE_TYPE);
     }
-    
-    public String toString()
-    {
+
+    public String toString() {
         return (RESPONSE_TYPE);
     }
-    
+
 }

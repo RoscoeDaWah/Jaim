@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,8 +26,7 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.5 $
  */
 
@@ -36,47 +35,41 @@ import java.util.Vector;
 public abstract class TocResponseFactory {
 
     static Vector responseHandlers = new Vector();
-    
-    /** Creates new TocResponseFactory */
+
+    /**
+     * Creates new TocResponseFactory
+     */
     public TocResponseFactory() {
     }
 
-    public static void addResponseHandler(TocResponseHandler h)
-    {
-        synchronized (responseHandlers)
-        {
+    public static void addResponseHandler(TocResponseHandler h) {
+        synchronized (responseHandlers) {
             responseHandlers.add(h);
         }
     }
-    
-    static TocResponse createResponse(byte[] b)
-    {
-        TocResponse tr=null;
-        String strversion=new String(b);
-        int colonpos=strversion.indexOf(':');
-        if (colonpos != -1)
-        {
-            String firstWord=strversion.substring(0,colonpos);
-            int i=0;
-            synchronized (responseHandlers)
-            {
-                while ((i<responseHandlers.size())&&(tr==null))
-                {
-                    TocResponseHandler h=(TocResponseHandler)responseHandlers.elementAt(i);
-                    if (h.canHandle(firstWord))
-                    {
-                        tr=h.parseString(strversion);
+
+    static TocResponse createResponse(byte[] b) {
+        TocResponse tr = null;
+        String strversion = new String(b);
+        int colonpos = strversion.indexOf(':');
+        if (colonpos != -1) {
+            String firstWord = strversion.substring(0, colonpos);
+            int i = 0;
+            synchronized (responseHandlers) {
+                while ((i < responseHandlers.size()) && (tr == null)) {
+                    TocResponseHandler h = (TocResponseHandler) responseHandlers.elementAt(i);
+                    if (h.canHandle(firstWord)) {
+                        tr = h.parseString(strversion);
                     }
                     i++;
                 }
             }
         }
-        if (tr==null)
-        {
-            GenericTocResponse gtr=new GenericTocResponse();
-            tr=gtr.parseString(strversion);
+        if (tr == null) {
+            GenericTocResponse gtr = new GenericTocResponse();
+            tr = gtr.parseString(strversion);
         }
-        return(tr);
+        return (tr);
     }
-    
+
 }

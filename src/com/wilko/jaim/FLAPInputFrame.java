@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,51 +26,44 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class FLAPInputFrame extends FLAPFrame {
 
-    /** Creates new FLAPInputFrame */
-    private int frameLen; 
-    
+    /**
+     * Creates new FLAPInputFrame
+     */
+    private int frameLen;
+
     public FLAPInputFrame() {
-        frameLen=0;
+        frameLen = 0;
         super.initialise();
     }
-    
-    public void addFrameData(byte b)
-    {
-        frame[frameLen++]=b;
+
+    public void addFrameData(byte b) {
+        frame[frameLen++] = b;
     }
 
-    public byte[] getFrameData()
-    {
-        byte[] b=new byte[frameLen];
-        System.arraycopy(frame,0,b,0,frameLen);
-        return(b);
+    public byte[] getFrameData() {
+        byte[] b = new byte[frameLen];
+        System.arraycopy(frame, 0, b, 0, frameLen);
+        return (b);
     }
-    
-    public void resetInputFrame()
-    {
-        frameLen=0;
+
+    public void resetInputFrame() {
+        frameLen = 0;
     }
-    
-    public boolean completeFrameRead()
-    {
-        if (frameLen > 5)
-        {
-            if (frameLen-6 == getLength())
-            {
-                return(true);
-            }
+
+    public boolean completeFrameRead() {
+        if (frameLen > 5) {
+            return frameLen - 6 == getLength();
         }
-        return(false);
+        return (false);
     }
-    
+
     public int getFLAPFrameType() {
-        return(-1);
+        return (-1);
     }
-    
+
 }

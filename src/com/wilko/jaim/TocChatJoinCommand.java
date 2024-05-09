@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,28 +26,28 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.4 $
  */
 public class TocChatJoinCommand extends TocCommand {
 
-    private int exchange;
-    private String roomName;
+    private final int exchange;
+    private final String roomName;
 
-    /** Creates new TocIMCommand */
+    /**
+     * Creates new TocIMCommand
+     */
     public TocChatJoinCommand(int exchange, String roomName) {
-        this.exchange=exchange;
-        this.roomName=roomName;
+        this.exchange = exchange;
+        this.roomName = roomName;
     }
 
-    public String toString()
-    {
-        return ("toc_chat_join "+exchange+" "+roomName);
+    public String toString() {
+        return ("toc_chat_join " + exchange + " " + roomName);
     }
-    
+
     public byte[] getBytes() {
-        return(this.toString().getBytes());
+        return (this.toString().getBytes());
     }
-    
+
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,7 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $version: $
  */
 public class JaimStateException extends JaimException {
@@ -34,6 +33,7 @@ public class JaimStateException extends JaimException {
 
     /**
      * Constructs an <code>JaimStateException</code> with the specified detail message.
+     *
      * @param msg the detail message.
      */
     public JaimStateException(String msg) {

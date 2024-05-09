@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
  *
  */
 
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -39,32 +39,31 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $version: $
  */
 public class TocGetInfoCommand extends TocCommand {
 
-    private String username;
-     
-    private static String CMD="toc_get_info ";
-    /** Creates new TocGetInfoCommand
-     *@param username The screen name for whom information is requested
+    private static final String CMD = "toc_get_info ";
+    private final String username;
+
+    /**
+     * Creates new TocGetInfoCommand
      *
+     * @param username The screen name for whom information is requested
      */
-    
+
     public TocGetInfoCommand(String username) {
-        this.username=Utils.normalise(username);
+        this.username = Utils.normalise(username);
     }
-    
-    
-     public String toString()
-    {
-        return(CMD+username);
+
+
+    public String toString() {
+        return (CMD + username);
     }
 
     public byte[] getBytes() {
-        return(toString().getBytes());
+        return (toString().getBytes());
     }
-    
+
 }

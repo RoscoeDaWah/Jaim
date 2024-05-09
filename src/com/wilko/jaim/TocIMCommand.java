@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,33 +26,33 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.4 $
  */
 public class TocIMCommand extends TocCommand {
 
-    private String recipient;
-    private String msg;
-    private String auto;
-    
-    /** Creates new TocIMCommand */
-    public TocIMCommand(String recipient, String msg,boolean autoMessage) {
-        this.recipient=Utils.normalise(recipient);
-        this.msg=Utils.encodeText(msg);
+    private final String recipient;
+    private final String msg;
+    private final String auto;
+
+    /**
+     * Creates new TocIMCommand
+     */
+    public TocIMCommand(String recipient, String msg, boolean autoMessage) {
+        this.recipient = Utils.normalise(recipient);
+        this.msg = Utils.encodeText(msg);
         if (autoMessage)
-            auto=" auto";
+            auto = " auto";
         else
-            auto="";
+            auto = "";
     }
 
-    public String toString()
-    {
-        return ("toc_send_im "+recipient+" "+msg+auto);
+    public String toString() {
+        return ("toc_send_im " + recipient + " " + msg + auto);
     }
-    
+
     public byte[] getBytes() {
-        return(this.toString().getBytes());
+        return (this.toString().getBytes());
     }
-    
+
 }

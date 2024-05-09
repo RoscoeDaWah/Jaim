@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -28,40 +28,38 @@ package com.wilko.jaim;
 import java.util.Vector;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $Revision: 1.3 $
  */
 public class TocAddBuddyCommand extends TocCommand {
 
-    private static String CMD="toc_add_buddy";
-    
+    private static final String CMD = "toc_add_buddy";
+
     Vector buddyList;
-    
-    /** Creates new TocAddBuddyCommand */
+
+    /**
+     * Creates new TocAddBuddyCommand
+     */
     public TocAddBuddyCommand() {
-        buddyList=new Vector();
+        buddyList = new Vector();
     }
 
-    public void addBuddy(String buddy)
-    {
+    public void addBuddy(String buddy) {
         buddyList.add(Utils.normalise(buddy));
     }
-    
-    public String toString()
-    {
-        StringBuffer output=new StringBuffer(CMD);
-        for (int i=0;i<buddyList.size();i++)
-        {
+
+    public String toString() {
+        StringBuffer output = new StringBuffer(CMD);
+        for (int i = 0; i < buddyList.size(); i++) {
             output.append(' ');
-            output.append((String)buddyList.elementAt(i));
+            output.append((String) buddyList.elementAt(i));
         }
-        return(output.toString());
+        return (output.toString());
     }
-    
-    
+
+
     public byte[] getBytes() {
-        return(toString().getBytes());
+        return (toString().getBytes());
     }
-    
+
 }

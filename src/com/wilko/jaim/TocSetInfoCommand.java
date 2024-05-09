@@ -1,4 +1,4 @@
-/* 
+/*
  *   (C) 2002 Paul Wilkinson  wilko@users.sourceforge.net
  *
  *   This program is free software; you can redistribute it and/or modify
@@ -26,31 +26,31 @@
 package com.wilko.jaim;
 
 /**
- *
- * @author  paulw
+ * @author paulw
  * @version $version: $
  */
 public class TocSetInfoCommand extends TocCommand {
 
-    private String information;
-     
-    private static String CMD="toc_set_info ";
-    /** Creates new TocSetInfoCommand
-     *@param information The information about this user can be located.  May contain HTML
+    private static final String CMD = "toc_set_info ";
+    private final String information;
+
+    /**
+     * Creates new TocSetInfoCommand
+     *
+     * @param information The information about this user can be located.  May contain HTML
      */
-    
+
     public TocSetInfoCommand(String information) {
-        this.information=Utils.encodeText(information);
+        this.information = Utils.encodeText(information);
     }
-    
-    
-     public String toString()
-    {
-        return(CMD+information);
+
+
+    public String toString() {
+        return (CMD + information);
     }
 
     public byte[] getBytes() {
-        return(toString().getBytes());
+        return (toString().getBytes());
     }
-    
+
 }
