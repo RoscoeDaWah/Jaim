@@ -16,32 +16,36 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
+/*
+ * FlapErrorFrame.java
+ *
+ * Created on 3 May 2002, 14:54
+ */
 
-package com.wilko.jaim;
-
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.flap;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.3 $
  */
-public class JaimEvent extends java.util.EventObject {
-
-    private final TocResponse tocResponse;
+public class FLAPErrorFrame extends FLAPFrame {
 
     /**
-     * Creates new JaimEvent
+     * Creates new FLAPErrorFrame
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public FLAPErrorFrame() {
+        frame[1] = FLAP_FRAME_ERROR;
+
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public FLAPErrorFrame(byte[] frameData) {
+        frame[1] = FLAP_FRAME_ERROR;
+        setFrameData(frameData);
+    }
+
+
+    public int getFLAPFrameType() {
+        return FLAPFrame.FLAP_FRAME_ERROR;
     }
 
 }

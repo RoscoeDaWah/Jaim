@@ -17,31 +17,39 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocIMCommand.java
+ *
+ * Created on 4 May 2002, 15:18
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.4 $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocChatEvilCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private final String roomID;
+    private final String screenname;
+    private final Boolean anonymous;
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocIMCommand
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public TocChatEvilCommand(String roomID, String screenname, Boolean anonymous) {
+        this.roomID = roomID;
+        this.screenname = screenname;
+        this.anonymous = anonymous;
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public String toString() {
+        return ("toc_chat_evil " + roomID + " " + screenname + " " + (anonymous ? "anon" : "norm"));
+    }
+
+    public byte[] getBytes() {
+        return (this.toString().getBytes());
     }
 
 }

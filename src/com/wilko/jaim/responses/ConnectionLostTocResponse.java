@@ -17,31 +17,36 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * ConnectionLostTocResponse.java
+ *
+ * Created on November 2, 2002, 2:52 PM
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.responses;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
+ * This is a "pseudo" TOC response - it is delivered to JaimLib clients to indicate that the connection to the server has been lost.
  *
- * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @author wilko
+ * @version: $revision: $
  */
-public class JaimEvent extends java.util.EventObject {
+public class ConnectionLostTocResponse extends TocResponse {
 
-    private final TocResponse tocResponse;
+    public static final String RESPONSE_TYPE = "CONNECTIONLOST";
 
     /**
-     * Creates new JaimEvent
+     * Creates a new instance of LoginCompleteTocResponse
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public ConnectionLostTocResponse() {
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public String getResponseType() {
+        return (RESPONSE_TYPE);
+    }
+
+    public String toString() {
+        return (RESPONSE_TYPE);
     }
 
 }

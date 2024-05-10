@@ -17,31 +17,45 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocEvilCommand.java
+ *
+ * Created on 6 May 2002, 09:05
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
+
+import com.wilko.jaim.Utils;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.3 $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocEvilCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private final String buddy;
+    private final boolean anonymous;
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocEvilCommand
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public TocEvilCommand(String buddy, boolean anonymous) {
+        this.buddy = Utils.normalise(buddy);
+        this.anonymous = anonymous;
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public String toString() {
+        String ret = "toc_evil " + buddy;
+        if (anonymous) {
+            ret = ret + " anon";
+        } else
+            ret = ret + " norm";
+
+        return (ret);
+    }
+
+    public byte[] getBytes() {
+        return toString().getBytes();
     }
 
 }

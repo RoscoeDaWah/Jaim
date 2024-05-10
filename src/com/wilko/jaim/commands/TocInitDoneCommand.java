@@ -17,31 +17,34 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocInitDoneCommand.java
+ *
+ * Created on 4 May 2002, 13:35
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.4 $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocInitDoneCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private static final String CMD = "toc_init_done";
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocInitDoneCommand
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public TocInitDoneCommand() {
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public byte[] getBytes() {
+        return (CMD.getBytes());
+    }
+
+    public String toString() {
+        return (CMD);
     }
 
 }

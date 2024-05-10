@@ -17,31 +17,53 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * FLAPInputFrame.java
+ *
+ * Created on 3 May 2002, 15:52
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.flap;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.3 $
  */
-public class JaimEvent extends java.util.EventObject {
-
-    private final TocResponse tocResponse;
+public class FLAPInputFrame extends FLAPFrame {
 
     /**
-     * Creates new JaimEvent
+     * Creates new FLAPInputFrame
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    private int frameLen;
+
+    public FLAPInputFrame() {
+        frameLen = 0;
+        super.initialise();
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public void addFrameData(byte b) {
+        frame[frameLen++] = b;
+    }
+
+    public byte[] getFrameData() {
+        byte[] b = new byte[frameLen];
+        System.arraycopy(frame, 0, b, 0, frameLen);
+        return (b);
+    }
+
+    public void resetInputFrame() {
+        frameLen = 0;
+    }
+
+    public boolean completeFrameRead() {
+        if (frameLen > 5) {
+            return frameLen - 6 == getLength();
+        }
+        return (false);
+    }
+
+    public int getFLAPFrameType() {
+        return (-1);
     }
 
 }

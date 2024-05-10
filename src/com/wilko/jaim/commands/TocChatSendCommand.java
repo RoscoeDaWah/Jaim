@@ -17,31 +17,37 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocIMCommand.java
+ *
+ * Created on 4 May 2002, 15:18
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.4 $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocChatSendCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private final String roomID;
+    private final String message;
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocIMCommand
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public TocChatSendCommand(String roomID, String message) {
+        this.roomID = roomID;
+        this.message = message;
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public String toString() {
+        return ("toc_chat_send " + roomID + " \"" + message + "\"");
+    }
+
+    public byte[] getBytes() {
+        return (this.toString().getBytes());
     }
 
 }

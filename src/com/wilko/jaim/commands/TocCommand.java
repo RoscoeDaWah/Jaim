@@ -17,31 +17,28 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocCommand.java
+ *
+ * Created on 4 May 2002, 11:19
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.3 $
  */
-public class JaimEvent extends java.util.EventObject {
-
-    private final TocResponse tocResponse;
+public abstract class TocCommand {
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocCommand
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public TocCommand() {
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
-    }
+    abstract public byte[] getBytes();
+
+    abstract public String toString();
 
 }

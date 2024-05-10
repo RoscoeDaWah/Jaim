@@ -17,31 +17,31 @@
  *
  */
 
-package com.wilko.jaim;
-
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.responses;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
  * @version $revision: $
- * @see JaimConnection#addEventListener
  */
-public class JaimEvent extends java.util.EventObject {
-
-    private final TocResponse tocResponse;
+public interface TocResponseHandler {
 
     /**
-     * Creates new JaimEvent
+     * Returns true if this response handler can handle the specified response.
+     *
+     * @param Response - the response string from TOC.  This is the part of the response before the first ':'
+     * @return true if the response can be handled
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
-    }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
-    }
+    boolean canHandle(String Response);
+
+    /**
+     * Parse the provided response
+     *
+     * @param Response - the response from the TOC server.  This is the full TOC response string
+     * @return - A TocResponse object that represents this response
+     */
+
+    TocResponse parseString(String Response);
 
 }
+

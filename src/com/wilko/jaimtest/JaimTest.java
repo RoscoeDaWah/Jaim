@@ -26,6 +26,7 @@
 package com.wilko.jaimtest;
 
 import com.wilko.jaim.*;
+import com.wilko.jaim.responses.*;
 
 import java.io.IOException;
 import java.io.InputStream;

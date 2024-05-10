@@ -3,13 +3,12 @@
 ## Client commands
 
 - [x] toc_chat_join
-- [ ] toc_chat_send
-- [ ] toc_chat_whisper
-- [ ] toc_chat_whisper
-- [ ] toc_chat_evil
-- [ ] toc_chat_invite
-- [ ] toc_chat_leave
-- [ ] toc_chat_accept
+- [x] toc_chat_send
+- [x] toc_chat_whisper
+- [x] toc_chat_evil
+- [x] toc_chat_invite
+- [x] toc_chat_leave
+- [x] toc_chat_accept
 
 ## Server commands
 

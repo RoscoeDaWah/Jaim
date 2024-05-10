@@ -25,6 +25,10 @@
 
 package com.wilko.jaim;
 
+import com.wilko.jaim.commands.*;
+import com.wilko.jaim.flap.*;
+import com.wilko.jaim.responses.*;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InterruptedIOException;
@@ -504,6 +508,100 @@ public class JaimConnection implements java.lang.Runnable {
 
     }
 
+    /**
+     * Sends a whisper to a user in a chat room
+     * @param roomID     The ID of the room
+     * @param screenname The screenname to whisper to
+     * @param message    The message
+     */
+    public void sentChatWhisper(String roomID, String screenname, String message) {
+        try {
+            TocChatWhisperCommand whisperCommand = new TocChatWhisperCommand(roomID, screenname, message);
+            sendTocCommand(whisperCommand);
+        } catch (IOException ignore) {
+        }
+    }
+
+    /**
+     * Accept a chat invite
+     * @param roomID The ID of the room
+     */
+
+    public void acceptChat(String roomID) {
+        try {
+            TocChatAcceptCommand acceptCommand = new TocChatAcceptCommand(roomID);
+            sendTocCommand(acceptCommand);
+        } catch (IOException ignore) {
+        }
+    }
+
+    /**
+     * Evil/warn someone inside a chat room
+     * @param roomID    The ID of the room
+     * @param screenname  The screenname to evil/warn
+     * @param anonymous Stay anonymous?
+     */
+    public void sendChatEvil(String roomID, String screenname, Boolean anonymous) {
+        try {
+            TocChatEvilCommand evilCommand = new TocChatEvilCommand(roomID, screenname, anonymous);
+            sendTocCommand(evilCommand);
+        } catch (IOException ignore) {
+        }
+    }
+
+    /**
+     * Evil/warn someone inside a chat room
+     * @param roomID    The ID of the room
+     * @param screenname  The screenname to evil/warn
+     */
+    public void sendChatEvil(String roomID, String screenname) {
+        sendChatEvil(roomID, screenname, false);
+    }
+
+    /**
+     * Send an invitation to a chat room
+     * @param roomID  The ID of the room
+     * @param message The message to be sent with the invite
+     * @param buddies An array of screennames to invite
+     */
+    public void sendChatInvite(String roomID, String message, String[] buddies) {
+        try {
+            TocChatInviteCommand inviteCommand = new TocChatInviteCommand(roomID, message, buddies);
+            sendTocCommand(inviteCommand);
+        } catch (IOException ignore) {
+        }
+    }
+
+    /**
+     * Send a message in a chat room
+     * @param roomID  The ID of the room
+     * @param message The message to send
+     */
+    public void sendChatMessage(String roomID, String message) {
+        try {
+            TocChatSendCommand sendCommand = new TocChatSendCommand(roomID, message);
+            sendTocCommand(sendCommand);
+        } catch (IOException ignore) {
+        }
+    }
+
+    /**
+     * Leave a chat room
+     * @param roomID The ID of the room
+     */
+    public void leaveChat(String roomID) {
+        try {
+            TocChatLeaveCommand leaveCommand = new TocChatLeaveCommand(roomID);
+            sendTocCommand(leaveCommand);
+        } catch (IOException ignore) {
+        }
+    }
+
+    /**
+     * Join a chat room
+     * @param exchange The exchange to use
+     * @param roomName The name of the room
+     */
     public void joinChat(int exchange, String roomName) {
         try {
             TocChatJoinCommand joinCommand = new TocChatJoinCommand(exchange, roomName);
@@ -512,6 +610,10 @@ public class JaimConnection implements java.lang.Runnable {
         }
     }
 
+    /**
+     * Join a chat room
+     * @param roomName The name of the room
+     */
     public void joinChat(String roomName) {
         joinChat(4, roomName);
     }

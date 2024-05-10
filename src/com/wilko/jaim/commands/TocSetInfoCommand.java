@@ -17,31 +17,42 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocSetInfoCommand.java
+ *
+ * Created on July 17, 2002, 9:02 PM
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
+
+import com.wilko.jaim.Utils;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $version: $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocSetInfoCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private static final String CMD = "toc_set_info ";
+    private final String information;
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocSetInfoCommand
+     *
+     * @param information The information about this user can be located.  May contain HTML
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+
+    public TocSetInfoCommand(String information) {
+        this.information = Utils.encodeText(information);
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+
+    public String toString() {
+        return (CMD + information);
+    }
+
+    public byte[] getBytes() {
+        return (toString().getBytes());
     }
 
 }

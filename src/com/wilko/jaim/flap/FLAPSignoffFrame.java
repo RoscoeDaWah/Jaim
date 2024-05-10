@@ -17,31 +17,36 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * FLAPSignoffFrame.java
+ *
+ * Created on 3 May 2002, 14:54
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.flap;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.3 $
  */
-public class JaimEvent extends java.util.EventObject {
-
-    private final TocResponse tocResponse;
+public class FLAPSignoffFrame extends FLAPFrame {
 
     /**
-     * Creates new JaimEvent
+     * Creates new FlapSignonFrame
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public FLAPSignoffFrame() {
+
+        frame[1] = FLAP_FRAME_SIGNOFF;
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public FLAPSignoffFrame(byte[] frameData) {
+        frame[1] = FLAP_FRAME_SIGNOFF;
+        setFrameData(frameData);
+    }
+
+
+    public int getFLAPFrameType() {
+        return (FLAPFrame.FLAP_FRAME_SIGNOFF);
     }
 
 }

@@ -17,31 +17,42 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * TocSetAwayCommand.java
+ *
+ * Created on July 17, 2002, 9:02 PM
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
+
+import com.wilko.jaim.Utils;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $version: $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocSetAwayCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private static final String CMD = "toc_set_away ";
+    private final String awayMsg;
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocSetInfoCommand
+     *
+     * @param awayMsg The away message for this user.  May contain HTML. To cancel "away" status set the awayMsg to ""
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+
+    public TocSetAwayCommand(String awayMsg) {
+        this.awayMsg = Utils.encodeText(awayMsg);
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+
+    public String toString() {
+        return (CMD + awayMsg);
+    }
+
+    public byte[] getBytes() {
+        return (toString().getBytes());
     }
 
 }

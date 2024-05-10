@@ -18,29 +18,50 @@
  */
 
 /*
- * JaimEventListener.java
+ * TocAddBuddyCommand.java
  *
- * Created on 4 May 2002, 14:37
+ * Created on 4 May 2002, 13:57
  */
 
-package com.wilko.jaim;
+package com.wilko.jaim.commands;
 
-import com.wilko.jaim.responses.TocResponse;
+import com.wilko.jaim.Utils;
+
+import java.util.Vector;
 
 /**
- * A JaimEventListener receives JaimEvents from the JaimConnection class.
- * A {@link JaimEvent} contains a {@link TocResponse} object.
- *
  * @author paulw
  * @version $Revision: 1.3 $
  */
-public interface JaimEventListener {
+public class TocAddBuddyCommand extends TocCommand {
+
+    private static final String CMD = "toc_add_buddy";
+
+    Vector buddyList;
 
     /**
-     * Receive an incoming {@link JaimEvent}
-     *
-     * @param ev - The incoming event
+     * Creates new TocAddBuddyCommand
      */
-    void receiveEvent(JaimEvent ev);
-}
+    public TocAddBuddyCommand() {
+        buddyList = new Vector();
+    }
 
+    public void addBuddy(String buddy) {
+        buddyList.add(Utils.normalise(buddy));
+    }
+
+    public String toString() {
+        StringBuffer output = new StringBuffer(CMD);
+        for (int i = 0; i < buddyList.size(); i++) {
+            output.append(' ');
+            output.append((String) buddyList.elementAt(i));
+        }
+        return (output.toString());
+    }
+
+
+    public byte[] getBytes() {
+        return (toString().getBytes());
+    }
+
+}

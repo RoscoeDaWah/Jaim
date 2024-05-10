@@ -16,32 +16,38 @@
  *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
+/*
+ * TocSetIdleCommand.java
+ *
+ * Created on July 17, 2002, 9:21 PM
+ */
 
-package com.wilko.jaim;
-
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.commands;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $version: $
  */
-public class JaimEvent extends java.util.EventObject {
+public class TocSetIdleCommand extends TocCommand {
 
-    private final TocResponse tocResponse;
+    private static final String CMD = "toc_set_idle ";
+    private final int idle;
 
     /**
-     * Creates new JaimEvent
+     * Creates new TocSetIdleCommand
+     *
+     * @param idleSecs - the period for which the user has been idle
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public TocSetIdleCommand(int idleSecs) {
+        idle = idleSecs;
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
+    public String toString() {
+        return (CMD + idle);
+    }
+
+    public byte[] getBytes() {
+        return (toString().getBytes());
     }
 
 }

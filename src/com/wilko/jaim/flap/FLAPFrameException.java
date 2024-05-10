@@ -17,31 +17,35 @@
  *
  */
 
-package com.wilko.jaim;
+/*
+ * FLAPFrameException.java
+ *
+ * Created on 3 May 2002, 15:05
+ */
 
-import com.wilko.jaim.responses.TocResponse;
+package com.wilko.jaim.flap;
 
 /**
- * The JaimEvent object is delivered to all registered {@link JaimEventListener}
- *
  * @author paulw
- * @version $revision: $
- * @see JaimConnection#addEventListener
+ * @version $Revision: 1.3 $
  */
-public class JaimEvent extends java.util.EventObject {
-
-    private final TocResponse tocResponse;
+public class FLAPFrameException extends java.lang.Exception {
 
     /**
-     * Creates new JaimEvent
+     * Creates new <code>FLAPFrameException</code> without detail message.
      */
-    public JaimEvent(Object source, TocResponse tocResponse) {
-        super(source);
-        this.tocResponse = tocResponse;
+    public FLAPFrameException() {
     }
 
-    public TocResponse getTocResponse() {
-        return (tocResponse);
-    }
 
+    /**
+     * Constructs an <code>FLAPFrameException</code> with the specified detail message.
+     *
+     * @param msg the detail message.
+     */
+    public FLAPFrameException(String msg) {
+        super(msg);
+    }
 }
+
+
