@@ -135,7 +135,13 @@ public class JaimTest implements JaimEventListener {
         } else if (responseType.equalsIgnoreCase(ConnectionLostTocResponse.RESPONSE_TYPE)) {
             System.out.println("Connection lost!");
         } else if (responseType.equalsIgnoreCase(ChatInviteTocResponse.RESPONSE_TYPE)) {
-            recieveChatInvite((ChatInviteTocResponse) tr);
+            receiveChatInvite((ChatInviteTocResponse) tr);
+        } else if (responseType.equalsIgnoreCase(ChatBuddyUpdateTocResponse.RESPONSE_TYPE)) {
+            receiveChatBuddyUpdate((ChatBuddyUpdateTocResponse) tr);
+        } else if (responseType.equalsIgnoreCase(ChatJoinTocResponse.RESPONSE_TYPE)) {
+            receiveChatJoin((ChatJoinTocResponse) tr);
+        } else if (responseType.equalsIgnoreCase(ChatMessageTocResponse.RESPONSE_TYPE)) {
+            receiveChatMessage((ChatMessageTocResponse) tr);
         } else {
             System.out.println("Unknown TOC Response:" + tr);
         }
@@ -154,6 +160,10 @@ public class JaimTest implements JaimEventListener {
 
         } catch (IOException e) {
         }
+    }
+
+    private void receiveChatMessage(ChatMessageTocResponse message) {
+        System.out.println(message.getScreenname() + "@" + message.getRoomID() + "->" + Utils.stripHTML(message.getMessage()));
     }
 
     private void receiveBuddyUpdate(BuddyUpdateTocResponse bu) {
@@ -209,7 +219,7 @@ public class JaimTest implements JaimEventListener {
         }
     }
 
-    private void recieveChatInvite(ChatInviteTocResponse inviteTocResponse) {
+    private void receiveChatInvite(ChatInviteTocResponse inviteTocResponse) {
         c.joinChat(inviteTocResponse.getRoomName());
     }
 
@@ -241,5 +251,11 @@ public class JaimTest implements JaimEventListener {
         }
     }
 
+    private void receiveChatBuddyUpdate(ChatBuddyUpdateTocResponse tr) {
+        System.out.println("Buddies " + (tr.getType()) + " " + tr.getRoomID() + ": " + String.join(", ", tr.getScreennames()));
+    }
 
+    private void receiveChatJoin(ChatJoinTocResponse tr) {
+        System.out.println("Joined " + tr.getRoomName());
+    }
 }

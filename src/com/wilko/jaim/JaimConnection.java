@@ -132,6 +132,10 @@ public class JaimConnection implements java.lang.Runnable {
         TocResponseFactory.addResponseHandler(new GotoTocResponse());
         TocResponseFactory.addResponseHandler(new ConfigTocResponse());
         TocResponseFactory.addResponseHandler(new ChatInviteTocResponse());
+        TocResponseFactory.addResponseHandler(new ChatJoinTocResponse());
+        TocResponseFactory.addResponseHandler(new ChatBuddyUpdateTocResponse());
+        TocResponseFactory.addResponseHandler(new ChatMessageTocResponse());
+        TocResponseFactory.addResponseHandler(new ChatLeftTocResponse());
         messageQueue = new Vector();
         myThread = new Thread(this);
         myThread.setDaemon(true);

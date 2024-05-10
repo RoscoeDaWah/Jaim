@@ -12,8 +12,8 @@
 
 ## Server commands
 
-- [ ] CHAT_JOIN
-- [ ] CHAT_IN
-- [ ] CHAT_UPDATE_BUDDY
+- [x] CHAT_JOIN
+- [x] CHAT_IN
+- [x] CHAT_UPDATE_BUDDY
 - [x] CHAT_INVITE
-- [ ] CHAT_LEFT
+- [x] CHAT_LEFT
