@@ -1,6 +1,6 @@
-# Jaim
-
-This is a fork of [Jaim](https://jaimlib.sourceforge.net/), a Java library that implements the AOL TOC protocol.
+<img src="https://git.frzn.dev/fwoppydwisk/Jaim/raw/branch/master/assets/logo.svg" alt="" height="100" align="center"/>
+<hr>
+A fork of [Jaim](https://jaimlib.sourceforge.net/), a Java library that implements the AOL TOC protocol.
 
 This fork features various improvements on the original Jaim:
 
