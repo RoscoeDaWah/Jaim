@@ -86,7 +86,7 @@ public class JaimConnection implements java.lang.Runnable {
      * In most cases this constructor should be used.
      */
     public JaimConnection() {
-        host = "toc.oscar.aol.com";
+        host = "toc.oscar.nina.chat";
         port = 9898;
         startMe();
 
